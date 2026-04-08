@@ -12,12 +12,12 @@ var map = L.map('mapa', {
 });
 
 //vistas del mapa
-var stadiaWorldTile = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.jpg', {
+var stadiaDefaultTile = L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.jpg', {
     maxZoom: 21.9,
     attribution: '&copy; OpenStreetMap contributors'
 });
 
-var stadiaDefaultTile = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.png', {
+var stadiaWorldTile = L.tileLayer('https://tiles.stadiamaps.com/tiles/stamen_terrain/{z}/{x}/{y}{r}.png', {
     maxZoom: 21.9,
     attribution: '&copy; OpenStreetMap contributors'
 });
