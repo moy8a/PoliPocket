@@ -1,0 +1,468 @@
+/*--General--*/
+
+@font-face {
+  font-family: "Museo";
+  src: url(../Fonts/MuseoSans_500.otf) format("truetype");
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+:root{
+--crema:#F5F0E8;
+--oscuro:#1A1410;
+--acento:#C4874A;
+--claro:#FAF7F2;
+--suave:#6B6258;
+}
+
+html,body{
+width:100%;
+height:100%;
+font-family: "Museo";
+background:var(--claro);
+color:var(--oscuro);
+overflow-x:hidden;
+}
+
+
+
+a{
+    text-decoration: none;    
+    color: #555656;
+    font-weight: bold;
+}
+
+a:hover{
+    color: green;
+}
+
+/*--Header--*/
+
+header{
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    font-family: 'Museo';
+    font-size: 14px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+#headLogo{
+    width: 40px;
+    height: 40px;
+}
+
+#hlogo{
+    width: 100%;
+    height: 100%;
+}
+
+nav{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+nav a{
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+
+/*--Portada--*/
+
+.dream{
+    width: 100%;
+    height: 100%;
+}
+.portada{
+width:100%;
+min-height:100vh;
+margin-top: 3%;
+}
+
+.portada__copy{
+width:100%;
+background:var(--oscuro);
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:10vh 6vw;
+position:relative;
+}
+
+.etiqueta{
+font-size:1.2vw;
+letter-spacing:0.15em;
+text-transform:uppercase;
+color:var(--acento);
+font-weight:bold;
+margin-bottom:3vh;
+}
+
+.portada__titulo{
+font-family: "Museo";
+font-size:6vw;
+font-weight:900;
+line-height:1.1;
+color:var(--claro);
+margin-bottom:3vh;
+}
+
+.portada__titulo em{
+color:var(--acento);
+font-style:italic;
+}
+
+.portada__desc{
+font-size:1.2vw;
+line-height:1.8;
+color:rgba(250,247,242,0.6);
+}
+
+.portada__foto{
+width:100%;
+min-height:50vh;
+background:var(--crema);
+position:relative;
+}
+
+.portada__fig{
+width:100%;
+height:100%;
+position:absolute;
+inset:0;
+}
+
+.portada__fig::after{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(26,20,16,0.7),transparent);
+}
+
+.portada__lugar{
+position:absolute;
+bottom:4vh;
+left:4vw;
+color:var(--claro);
+}
+
+.portada__lugar h2{
+font-family: "Museo";
+font-size:2.5vw;
+margin-bottom:1vh;
+}
+
+.portada__lugar p{
+font-size:1.1vw;
+color:rgba(250,247,242,0.7);
+}
+
+/*--Historia--*/
+
+.historia{
+width:100%;
+padding:10vh 6vw;
+}
+
+.historia__rotulo{
+font-size:1vw;
+letter-spacing:0.15em;
+text-transform:uppercase;
+color:var(--acento);
+margin-bottom:3vh;
+}
+
+.historia__texto h2{
+font-family: "Museo";
+font-size:4vw;
+margin-bottom:4vh;
+}
+
+.historia__texto p{
+font-size:1.2vw;
+line-height:1.9;
+color:var(--suave);
+margin-bottom:3vh;
+}
+
+.contacto{
+width:100%;
+background:var(--crema);
+padding:12vh 6vw;
+text-align:center;
+position:relative;
+overflow:hidden;
+}
+
+.contacto::before{
+content:'';
+position:absolute;
+width:40vw;
+height:40vw;
+border-radius:50%;
+border:0.1vw solid rgba(196,135,74,0.15);
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+
+.contacto::after{
+content:'';
+position:absolute;
+width:65vw;
+height:65vw;
+border-radius:50%;
+border:0.1vw solid rgba(196,135,74,0.08);
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+
+.contacto__centro{
+position:relative;
+z-index:2;
+}
+
+.contacto__titulo{
+font-family: "Museo";
+font-size:5vw;
+font-weight:900;
+margin:3vh 0;
+}
+
+.contacto__titulo em{
+color:var(--acento);
+font-style:italic;
+}
+
+.contacto__desc{
+font-size:1.2vw;
+line-height:1.8;
+color:var(--suave);
+margin-bottom:5vh;
+}
+
+/*--Botones--*/
+
+.contacto__botones{
+width:100%;
+display:flex;
+justify-content:center;
+gap:1vw;
+}
+
+.boton--principal{
+background:var(--oscuro);
+color:var(--claro);
+padding:1.5vh 2.5vw;
+border-radius:5vw;
+font-size:1vw;
+text-decoration:none;
+transition:0.3s;
+}
+
+.boton--principal:hover{
+background:var(--acento);
+}
+
+.boton--secundario{
+border:0.15vw solid var(--oscuro);
+color:var(--oscuro);
+padding:1.5vh 2.5vw;
+border-radius:5vw;
+font-size:1vw;
+text-decoration:none;
+transition:0.3s;
+}
+
+.boton--secundario:hover{
+border-color:var(--acento);
+color:var(--acento);
+}
+
+
+footer{
+    width: 100%;
+    background-color: #252729;
+    font-family: 'Museo';
+    padding: 30px 20px;
+}
+
+.foart1{
+    width: 100%;
+    margin-bottom: 30px;
+    color: rgb(255, 255, 255);
+}
+
+.foart1 h1{
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.foart1 h4{
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.foart1 p{
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.foart1 a{
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.web{
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+footer a{
+    color: rgb(1, 205, 123);
+}
+
+
+/*--Responsive--*/
+
+/* Media Query para Header en Escritorio */
+@media (min-width: 768px) {
+    header{
+        height: 10%;
+        min-height: 70px;
+        font-size: 130%;
+        padding: 0;
+        justify-content: flex-start;
+    }
+
+    #headLogo{
+        width: 15%;
+        height: 100%;
+        float: left;
+    }
+
+    #hlogo{
+        width: 27%;
+        height: 80%;
+        margin-left: 10%;
+        margin-top: 3%;
+    }
+
+    nav{
+        width: 75%;
+        height: 100%;
+        float: left;
+        justify-content: space-around;
+        gap: 0;
+    }
+
+    nav a{
+        font-size: inherit;
+    }
+
+    #alter{
+        display: block;
+        width: 10%;
+        height: 100%;
+        float: left;
+        background-color: rgb(255, 255, 255);
+    }
+}
+
+/* Media Query para Footer en Escritorio */
+@media (min-width: 768px) {
+    footer{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 2% 0;
+    }
+
+    .foart1{
+        width: 15%;
+        margin-left: 4.5%;
+        margin-top: 2%;
+        margin-bottom: 0;
+    }
+
+    .foart1 h1{
+        font-size: inherit;
+    }
+
+    .foart1 h4{
+        font-size: inherit;
+    }
+
+    .foart1 p{
+        font-size: inherit;
+    }
+
+    .foart1 a{
+        font-size: inherit;
+        display: inline;
+    }
+
+    .web{
+        width: 20%;
+        border-radius: 40px;
+        aspect-ratio: 1/1;
+        float: left;
+        margin-left: 3%;
+        margin-top: 5%;
+        display: block;
+    }
+}
+
+@media(min-width:768px){
+
+.portada{
+display:grid;
+grid-template-columns:1fr 1fr;
+}
+
+.portada__desc{
+max-width:90vw;
+}
+
+.portada__foto{
+min-height:100vh;
+}
+
+.historia{
+width:100%;
+padding:10vh 6vw;
+}
+
+.contacto__titulo{
+max-width:60vw;
+margin:auto;
+}
+
+.contacto__desc{
+max-width:45vw;
+margin:auto;
+}
+
+}

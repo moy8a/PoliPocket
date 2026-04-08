@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Reportes</title>
+    <link rel="stylesheet" href="verReportes.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+<body>
+
+    <header>
+        <section id="headLogo">
+            <article id="hlogo">
+            <a href="../index/index.html"><img src="../imagenes/logotipos/Logoxd.png" alt=""></a> 
+            </article>
+        </section>
+        <nav>
+            <a href="h1">Mapa</a>
+            <a href="../reportes/misReportes.html">Ver Reportes</a>
+            <a href="../chatBot/chatBot.html">PoliBot</a>
+            <a href="../ayuda/ayuda.html">Ayuda</a>
+        </nav>
+    </header>
+
+<main class="table">
+
+    <section class="table__header">
+        <h1>Ver Reportes</h1>
+        <section class="tabs">
+            <button class="tab tab--pendiente active" onclick="mostrarTab('pendiente', this)">Pendiente</button>
+            <button class="tab tab--enproceso" onclick="mostrarTab('enproceso', this)">En Proceso</button>
+            <button class="tab tab--completado" onclick="mostrarTab('completado', this)">Completado</button>
+        </section>
+        <section class="header-actions">
+            <button class="btn-exportar" onclick="exportarExcel()">⬇ Exportar Excel</button>
+            <form class="input-group">
+                <input type="search" id="searchUser" placeholder="Buscar reporte por ID_">
+            </form>
+            <button class="btn-filtrar">⚙ Filtrar</button>
+        </section>
+    </section>
+
+    <section class="table__body">
+
+        <!-- Tabla Pendiente -->
+        <section id="tab-pendiente" class="tab-content active">
+            <table id="tabla-pendiente">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha de Expedicion</th>
+                        <th>Fecha de Solucion</th>
+                        <th>Tipo de Reporte</th>
+                        <th>Edificio</th>
+                        <th>Descripcion</th>
+                        <th>Codigo Alumno</th>
+                        <th>Codigo Colaborador</th>
+                        <th>Area</th>
+                        <th>Atender Reporte</th>
+                    </tr>
+                </thead>
+                <tbody id="Tabla_usuario">
+                    <tr>
+                        <td>1</td>
+                        <td>2024-01-01</td>
+                        <td>2024-01-05</td>
+                        <td>Eléctrico</td>
+                        <td>Edificio A</td>
+                        <td>Descripción del reporte 1</td>
+                        <td>ALU-001</td>
+                        <td>COL-001</td>
+                        <td>Aula E1</td>
+                        <td><button class="btn-accion btn-atender">Atender</button></td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>2024-01-02</td>
+                        <td>2024-01-06</td>
+                        <td>Plomería</td>
+                        <td>Edificio B</td>
+                        <td>Descripción del reporte 2</td>
+                        <td>ALU-002</td>
+                        <td>COL-002</td>
+                        <td>Aula E2</td>
+                        <td><button class="btn-accion btn-atender">Atender</button></td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>2024-01-03</td>
+                        <td>2024-01-07</td>
+                        <td>Iluminación</td>
+                        <td>Edificio C</td>
+                        <td>Descripción del reporte 3</td>
+                        <td>ALU-003</td>
+                        <td>COL-003</td>
+                        <td>Aula E3</td>
+                        <td><button class="btn-accion btn-atender">Atender</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Tabla En Proceso -->
+        <section id="tab-enproceso" class="tab-content">
+            <table id="tabla-enproceso">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha de Expedicion</th>
+                        <th>Fecha de Solucion</th>
+                        <th>Tipo de Reporte</th>
+                        <th>Edificio</th>
+                        <th>Descripcion</th>
+                        <th>Codigo Alumno</th>
+                        <th>Codigo Colaborador</th>
+                        <th>Area</th>
+                        <th>Marcar como Completado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>4</td>
+                        <td>2024-01-04</td>
+                        <td>2024-01-08</td>
+                        <td>Eléctrico</td>
+                        <td>Edificio D</td>
+                        <td>Descripción del reporte 4</td>
+                        <td>ALU-004</td>
+                        <td>COL-004</td>
+                        <td>Aula E4</td>
+                        <td><button class="btn-accion btn-completar">Completado</button></td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td>2024-01-05</td>
+                        <td>2024-01-09</td>
+                        <td>Plomería</td>
+                        <td>Edificio E</td>
+                        <td>Descripción del reporte 5</td>
+                        <td>ALU-005</td>
+                        <td>COL-005</td>
+                        <td>Aula B1</td>
+                        <td><button class="btn-accion btn-completar">Completado</button></td>
+                    </tr>
+                    <tr>
+                        <td>6</td>
+                        <td>2024-01-06</td>
+                        <td>2024-01-10</td>
+                        <td>Iluminación</td>
+                        <td>Edificio F</td>
+                        <td>Descripción del reporte 6</td>
+                        <td>ALU-006</td>
+                        <td>COL-006</td>
+                        <td>Aula B2</td>
+                        <td><button class="btn-accion btn-completar">Completado</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Tabla Completado -->
+        <section id="tab-completado" class="tab-content">
+            <table id="tabla-completado">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Fecha de Expedicion</th>
+                        <th>Fecha de Solucion</th>
+                        <th>Tipo de Reporte</th>
+                        <th>Edificio</th>
+                        <th>Descripcion</th>
+                        <th>Codigo Alumno</th>
+                        <th>Codigo Colaborador</th>
+                        <th>Area</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>7</td>
+                        <td>2024-01-07</td>
+                        <td>2024-01-11</td>
+                        <td>Eléctrico</td>
+                        <td>Edificio G</td>
+                        <td>Descripción del reporte 7</td>
+                        <td>ALU-007</td>
+                        <td>COL-007</td>
+                        <td>Aula B3</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>2024-01-08</td>
+                        <td>2024-01-12</td>
+                        <td>Plomería</td>
+                        <td>Edificio H</td>
+                        <td>Descripción del reporte 8</td>
+                        <td>ALU-008</td>
+                        <td>COL-008</td>
+                        <td>Aula B4</td>
+                    </tr>
+                    <tr>
+                        <td>9</td>
+                        <td>2024-01-09</td>
+                        <td>2024-01-13</td>
+                        <td>Iluminación</td>
+                        <td>Edificio I</td>
+                        <td>Descripción del reporte 9</td>
+                        <td>ALU-009</td>
+                        <td>COL-009</td>
+                        <td>Aula B5</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+    </section>
+</main>
+
+<footer>
+
+    <article class="foart1">
+        <h1>PoliPocket</h1>
+        <br>
+        <h4>El mejor sistema de reportes de la UDG</h4>
+        <p>© 2026 from PoliPocket</p>
+    </article>
+    <article class="foart1">
+        <h1>Redes Sociales</h1>
+            <section class="web">
+                <a href=""><img src="../imagenes/logotipos/instagram.png" alt="Instagram"></a>
+            </section>
+            <section class="web">
+                <a href=""><img src="../imagenes/logotipos/facebook.png" alt="Facebook"></a> 
+            </section>
+            <section class="web">
+                <a href=""><img src="../imagenes/logotipos/twitter.png" alt="Twitter"></a>
+            </section>
+            <section class="web">
+                <a href=""><img src="../imagenes/logotipos/spotify.png" alt="Spotify"></a>
+            </section>
+    </article>
+
+    <article class="foart1">
+        <h1>Contacto</h1>
+        <br>
+        <p>PoliPocket@support.com</p>
+    </article>
+    <article class="foart1">
+        <h1>Ayuda</h1>
+        <a href="../Ayuda/ayuda.html">Pagina de Ayuda</a> <br>
+    </article>
+    <article class="foart1">
+        <h1>Enlaces</h1>
+        <a href="../sobreNosotros/sobreNosotros.html">Sobre Nosotros</a><br>
+        <a href="../terminos/Terminos_y_Condiciones.pdf" target="_blank">Terminos y Condiciones</a>
+    </article>
+
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script src="verReportes.js"></script>
+</body>
+</html>

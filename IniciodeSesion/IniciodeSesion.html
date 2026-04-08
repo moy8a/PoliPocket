@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="IniciodeSesion.css">
+</head>
+
+<body>
+    <a href="../index/index.html"><section class="back"> <p><b>⭠ Atras </b></p>  </section></a>
+
+<main>
+    <section id="contall">
+
+        <section class="encabezado">
+            <h1>Bienvenido</h1>
+            <p>Inicia Sesión o Regístrate si no tienes cuenta</p>
+        </section>
+
+        <section class="elegir">
+            <section class="eleccion">
+                <button id="btnlogin" class="seleccionado">Iniciar Sesión</button>
+                <button id="btnregistro">Registrarse</button>
+            </section>
+            <br><a href="#">Continuar como Invitado</a>
+        </section>
+
+
+        <section class="formularios-wrapper">
+
+            <form method="post" action="" id="login" class="formulario activo">
+                <section class="contenido"><!---->
+                    <label>Correo</label>
+                    <input name="correo" type="text" placeholder="Ingresa tu Correo" required>
+
+                    <label>Contraseña</label>
+                    <input name="password" type="password" placeholder="Ingresa tu Contraseña" required>
+
+                    <label id="errorSesion"></label>
+                    <input type="submit" value="Iniciar Sesión">
+                    
+                </section>
+            </form>
+
+            <form method="post" action="" id="registro" class="formulario">
+
+                <section class="contenido">
+                    <label>Nombre</label>
+                    <input name="nombre" type="text" placeholder="Escribe tu Nombre Completo" required>
+
+                    <label>Apellido</label>
+                    <input name="apellido" type="text" placeholder="Escribe tu Apellido Paterno" required>
+
+                    <label>Código UDG</label>
+                    <input name="codigo" type="text" placeholder="Ej. 222810367" maxlength="9" inputmode="numeric" required oninput="this.value = this.value.replace(/\D/g, '').slice(0,9)">
+
+                    <label>Correo</label>
+                    <input name="correo" type="email" placeholder="Ej. carlos125@alumnos.udg.mx" required>
+
+                    <label>Contraseña</label>
+                    <input name="password" type="password" placeholder="Escribe tu Contraseña" required>
+
+                    <label id="errorRegistro"></label>
+                    <input type="submit" value="Registrarse">
+                </section>
+            </form>
+
+        </section>
+
+    </section>
+</main>
+
+<script src="IniciodeSesion.js"></script>
+<script type="module" src="registro.js"></script>
+<script type="module" src="iniciarSesion.js"></script>
+</body>
+</html>
+
+

@@ -1,0 +1,346 @@
+@font-face {
+  font-family: "Museo";
+  src: url(../Fonts/MuseoSans_500.otf) format("truetype");
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html,body{
+height:100%;
+background-color: #fff;
+ font-family: 'Museo';
+}
+
+
+.big{
+    font-size: 300%;
+}
+
+a{
+    text-decoration: none;    
+    color: #555656;
+    font-weight: bold;
+}
+
+a:hover{
+    color: green;
+}
+
+/*--Header--*/
+
+header{
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    position: fixed;
+    top: 0;
+    font-family: 'Museo';
+    font-size: 14px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+}
+
+#headLogo{
+    width: 40px;
+    height: 40px;
+}
+
+#hlogo{
+    width: 100%;
+    height: 100%;
+}
+
+nav{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+nav a{
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+/* layout principal */
+
+main{
+min-height:75vh;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* contenedor principal */
+
+#principal{
+width:60%;
+margin:40px 0;
+margin-top: 7%;
+padding:2rem;
+border-radius:15px;
+background:#9CC1E3;
+backdrop-filter:blur(10px);
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+/* info superior */
+
+.info{
+text-align:center;
+color:#fff;
+margin-bottom:2rem;
+}
+
+.info h1{margin-bottom:.5rem;}
+
+/* tarjetas */
+
+#tarjetascont{
+display:flex;
+flex-direction:column;
+align-items:center;
+margin-top:1rem;
+}
+
+.fila{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:20px;
+width:100%;
+margin-top:20px;
+perspective:1000px;
+}
+
+/* tarjeta flip */
+
+.tarjeta{
+position:relative;
+width:500px;
+height:250px;
+transform-style:preserve-3d;
+transition:transform .8s;
+}
+
+.tarjeta.flip{
+transform:rotateY(180deg);
+}
+
+/* caras */
+
+.tarjeta .front,
+.tarjeta .back{
+position:absolute;
+inset:0;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:20px;
+background:#CEF2FF;
+backface-visibility:hidden;
+-webkit-backface-visibility:hidden;
+padding:15px;
+}
+
+.tarjeta .back{
+transform:rotateY(180deg);
+text-align:justify;
+overflow:auto;
+font-size:14px;
+line-height:1.5;
+}
+
+/* uniformar textos */
+
+.tarjeta .back h1,
+.tarjeta .back h2,
+.tarjeta .back h3,
+.tarjeta .back p{
+font-size:14px;
+font-weight:normal;
+}
+
+/* panel derecho */
+
+.lado{
+width:180px;
+height:220px;
+padding:15px;
+border-radius:15px;
+background:rgba(255,255,255,.4);
+backdrop-filter:blur(10px);
+}
+
+
+footer{
+    width: 100%;
+    background-color: #252729;
+    font-family: 'Museo';
+    padding: 30px 20px;
+}
+
+.foart1{
+    width: 100%;
+    margin-bottom: 30px;
+    color: rgb(255, 255, 255);
+}
+
+.foart1 h1{
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.foart1 h4{
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.foart1 p{
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.foart1 a{
+    font-size: 14px;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.web{
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    margin-right: 15px;
+    margin-top: 15px;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+footer a{
+    color: rgb(1, 205, 123);
+}
+
+/* responsive */
+
+@media (max-width:768px){
+
+  #principal{
+  width:90%;
+  padding:1.25rem;
+  margin:20px 0;
+  }
+
+  .fila{
+  flex-direction:column;
+  }
+
+  .tarjeta{
+  width:100%;
+  height:200px;
+  }
+
+  .lado{
+  width:100%;
+  height:auto;
+  }
+
+}
+
+
+/* Media Query para Header en Escritorio */
+@media (min-width: 768px) {
+    header{
+        height: 10%;
+        min-height: 70px;
+        font-size: 130%;
+        padding: 0;
+        justify-content: flex-start;
+    }
+
+    #headLogo{
+        width: 15%;
+        height: 100%;
+        float: left;
+    }
+
+    #hlogo{
+        width: 27%;
+        height: 80%;
+        margin-left: 10%;
+        margin-top: 3%;
+    }
+
+    nav{
+        width: 75%;
+        height: 100%;
+        float: left;
+        justify-content: space-around;
+        gap: 0;
+    }
+
+    nav a{
+        font-size: inherit;
+    }
+
+    #alter{
+        display: block;
+        width: 10%;
+        height: 100%;
+        float: left;
+        background-color: rgb(255, 255, 255);
+    }
+}
+
+/* Media Query para Footer en Escritorio */
+@media (min-width: 768px) {
+    footer{
+        display: flex;
+        flex-wrap: wrap;
+        padding: 2% 0;
+    }
+
+    .foart1{
+        width: 15%;
+        margin-left: 4.5%;
+        margin-top: 2%;
+        margin-bottom: 0;
+    }
+
+    .foart1 h1{
+        font-size: inherit;
+    }
+
+    .foart1 h4{
+        font-size: inherit;
+    }
+
+    .foart1 p{
+        font-size: inherit;
+    }
+
+    .foart1 a{
+        font-size: inherit;
+        display: inline;
+    }
+
+    .web{
+        width: 20%;
+        border-radius: 40px;
+        aspect-ratio: 1/1;
+        float: left;
+        margin-left: 3%;
+        margin-top: 5%;
+        display: block;
+    }
+}
