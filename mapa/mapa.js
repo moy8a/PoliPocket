@@ -728,9 +728,6 @@ var geoJsonLayer = L.geoJSON(geoJsonPoli, {
       var nombreEdificio = feature.properties.nombre;
       var tipoEdificio = feature.properties.tipo;
 
-      //Mostrar aulas por edificio al seleccionar alguno
-      actualizarAulas(nombreEdificio);
-
       document.getElementById("nombreEdificio").innerHTML = nombreEdificio;
       document.getElementById("tipoEdificio").innerHTML = tipoEdificio;
 
@@ -787,9 +784,6 @@ barraBusqueda.addEventListener('input', function(){
 
         document.getElementById("nombreEdificio").innerHTML = nombreEdificio;
         document.getElementById("tipoEdificio").innerHTML = tipoEdificio;
-
-        //Mostrar aulas en la recomendacion de busqueda
-        actualizarAulas(nombreEdificio);
 
         tarjetaMapa.classList.add('visible');
 

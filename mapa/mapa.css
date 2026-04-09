@@ -3,8 +3,14 @@
     padding: 0;
 }
 
+@font-face{
+font-family:"Museo";
+src:url(../Fonts/MuseoSans_500.otf) format("truetype");
+}
+
 HTML, body{
     height: 100%;
+    font-family: "Museo";
 }
 
 #mapa{
