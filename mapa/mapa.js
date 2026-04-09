@@ -680,7 +680,7 @@ var geoJsonLayer = L.geoJSON(geoJsonPoli, {
   //estilo default
   style: function (feature) {
     if (feature.properties.tipo === "perimetro") {
-      return { color: '#ff6600', weight: 4, fillOpacity: 0 }
+      return { color: '#00c3ff', weight: 4, fillOpacity: 0 }
     } else return { fillOpacity: 0, weight: 0 }
   },
 
@@ -714,7 +714,7 @@ var geoJsonLayer = L.geoJSON(geoJsonPoli, {
     //agregar y quitar bordes cuando el mouse entra o sale
     layer.on('mouseover', function () {
 
-      layer.setStyle({ color: '#ff6600', weight: 4 });
+      layer.setStyle({ color: '#00c3ff', weight: 4 });
     });
 
     layer.on('mouseout', function () {
@@ -797,7 +797,7 @@ barraBusqueda.addEventListener('input', function(){
     //colocar borde si la busqueda coincide con nombre en el arrglo
     if(nombre.toLowerCase() === (busqueda)){
 
-      layer.setStyle({color:'#ff6600', weight: 4});
+      layer.setStyle({color:'#00c3ff', weight: 4});
 
     }else layer.setStyle({fillOpacity: 0, weight: 0});
 
