@@ -2,7 +2,12 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Segoe UI;
+font-family:"Museo";
+}
+
+@font-face{
+font-family:"Museo";
+src:url(../Fonts/MuseoSans_500.otf) format("truetype");
 }
 
 body{
@@ -50,7 +55,7 @@ to{transform:scale(1);opacity:1;}
 #contall{
 width:500px;
 background:rgba(0,0,0,0.4);
-padding:40px;
+padding:30px;
 border-radius:20px;
 box-shadow:0 20px 40px rgba(0,0,0,0.3);
 transition:all .4s ease;
