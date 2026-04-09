@@ -17,7 +17,7 @@
 </head>
 <body>
     
-    <section id="mapa"></section><!--este div define que tan grande es el mapa, pero no solo eso-->
+    <section id="mapa"></section><!--este div define que tan grande es el mapa-->
 
     <input type="text" id="barraBusqueda" class="barraBusqueda" placeholder="Buscar Edificios o Areas de Interes">
     <section id="contenedorBusqueda" class="contenedorBusqueda"></section><!--contenedor donde se muestran las recomendaciones al buscar-->
@@ -61,9 +61,6 @@
                         <h4>Aulas</h4>
                         <select id="aula" name="aula" required>
                             <option value="" disabled selected>Selecciona un Aula</option>
-                            <option value="aula1">Aula 1</option>
-                            <option value="aula2">Aula 2</option>
-                            <option value="aula3">Aula 3</option>
                         </select>
                     </section>
 
@@ -130,6 +127,21 @@
             </section>
         </section>
     </aside>
+
+    <!--Menu de header y footer-->
+    <aside id="menuDerecha" class="menuDerecha">
+
+        <section class="contenidoMenuDerecha">
+            <button id="cerrarDerecha" class="cerrar">✕</button>
+        </section>
+
+    </aside>
+
+    <section id="btnderecha">
+        <button id="abrirDerecha" class="botones">
+            Abrir menú derecho
+        </button>
+    </section>
     
     <section id="bntsfuncionesmap">
         <button id="botonCentrar" class="botones">⌖ Centrar</button><!--este boton centra el mapa a la posicion y zoom original-->
@@ -137,5 +149,6 @@
     </section>
    
 <script type="module" src="mapa.js"></script>
+<script src="menurep.js"></script>
 </body>
 </html>
