@@ -10,11 +10,10 @@ box-sizing:border-box;
 }
 
 html,body{
-height:100%;
-background-color: #fff;
- font-family: 'Museo';
+    height:100%;
+    background-color: #fff;
+    font-family: 'Museo';
 }
-
 
 .big{
     font-size: 300%;
@@ -38,7 +37,6 @@ header{
     background-color: white;
     position: fixed;
     top: 0;
-    font-family: 'Museo';
     font-size: 14px;
     z-index: 1000;
     display: flex;
@@ -68,121 +66,251 @@ nav a{
     white-space: nowrap;
 }
 
-/* layout principal */
+/*--Main--*/
 
-main{
-min-height:75vh;
-display:flex;
-justify-content:center;
-align-items:center;
+.bienvenida {
+  background: #698fc6;
+  padding: 7rem 2rem 4rem;
+  position: relative;
+  overflow: hidden;
+  margin-top: 60px;
 }
 
-/* contenedor principal */
-
-#principal{
-width:60%;
-margin:40px 0;
-margin-top: 7%;
-padding:2rem;
-border-radius:15px;
-background:#9CC1E3;
-backdrop-filter:blur(10px);
-box-shadow:0 10px 25px rgba(0,0,0,.2);
+.bienvenida-inner {
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
-/* info superior */
-
-.info{
-text-align:center;
-color:#fff;
-margin-bottom:2rem;
+.bienvenida-badge {
+  display: inline-block;
+  background: rgba(181, 217, 241, 0.5);
+  color: #ffffff;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 14px;
+  border-radius: 100px;
+  border: 0.5px solid rgba(0, 0, 0, 0.4);
+  margin-bottom: 1.25rem;
 }
 
-.info h1{margin-bottom:.5rem;}
-
-/* tarjetas */
-
-#tarjetascont{
-display:flex;
-flex-direction:column;
-align-items:center;
-margin-top:1rem;
+.bienvenida-title {
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  letter-spacing: -0.5px;
 }
 
-.fila{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:20px;
-width:100%;
-margin-top:20px;
-perspective:1000px;
+.bienvenida-sub {
+  font-size: 15px;
+  color: #000000;
+  line-height: 1.6;
+  margin-bottom: 2rem;
 }
 
-/* tarjeta flip */
-
-.tarjeta{
-position:relative;
-width:500px;
-height:250px;
-transform-style:preserve-3d;
-transition:transform .8s;
+.barra-busqueda {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 0 16px;
+  max-width: 440px;
+  margin: 0 auto;
+  gap: 10px;
+  height: 46px;
 }
 
-.tarjeta.flip{
-transform:rotateY(180deg);
+.barra-busqueda input {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 100%;
+  color: #1a1a2e;
+  background: transparent;
 }
 
-/* caras */
+.barra-busqueda input::placeholder { color: #94a3b8; }
 
-.tarjeta .front,
-.tarjeta .back{
-position:absolute;
-inset:0;
-display:flex;
-align-items:center;
-justify-content:center;
-border-radius:20px;
-background:#CEF2FF;
-backface-visibility:hidden;
--webkit-backface-visibility:hidden;
-padding:15px;
+.bienvenida-deco {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  background: rgba(130, 168, 212, 0.5);
+  top: -200px;
+  right: -100px;
+  pointer-events: none;
 }
 
-.tarjeta .back{
-transform:rotateY(180deg);
-text-align:justify;
-overflow:auto;
-font-size:14px;
-line-height:1.5;
+/* ─── Content ─── */
+
+.contenido-principal {
+  max-width: 900px;
+  margin: 2.5rem auto;
+  padding: 0 1.5rem 3rem;
 }
 
-/* uniformar textos */
-
-.tarjeta .back h1,
-.tarjeta .back h2,
-.tarjeta .back h3,
-.tarjeta .back p{
-font-size:14px;
-font-weight:normal;
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #94a3b8;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 
-/* panel derecho */
+/* ─── Tarjetas ─── */
 
-.lado{
-width:180px;
-height:220px;
-padding:15px;
-border-radius:15px;
-background:rgba(255,255,255,.4);
-backdrop-filter:blur(10px);
+.section-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+  margin-bottom: 2rem;
 }
 
+.info-breve {
+  background: #fff;
+  border: 0.5px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 1.25rem;
+  transition: border-color 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.info-breve:hover {
+  border-color: #93c5fd;
+  transform: translateY(-2px);
+}
+
+.info-breve h3 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.info-breve > p {
+  font-size: 13px;
+  color: #64748b;
+  line-height: 1.65;
+  flex: 1;
+}
+
+.info-extra {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+
+.info-extra p {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.7;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 0.5px solid #f1f5f9;
+}
+
+.tip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  background: #eff6ff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 12px;
+  color: #1e40af;
+}
+
+.btn-ver-mas {
+  margin-top: 14px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  color: #3b82f6;
+  padding: 0;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: opacity 0.15s;
+}
+
+.btn-ver-mas:hover { opacity: 0.7; }
+
+
+
+/* ─── Sin resultados ─── */
+
+.sin-resultados {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 3rem;
+  color: #94a3b8;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+/* ─── barra de contacto ─── */
+
+.barra-contacto {
+  background: #698fc6;
+  border-radius: 14px;
+  padding: 1.5rem 1.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.contacto-label {
+  font-size: 13px;
+  color: #000000;
+  margin-bottom: 4px;
+}
+
+.contacto-value {
+  font-size: 15px;
+  color: #fff;
+}
+
+.contacto-value strong { font-weight: 600; }
+
+.contacto-btn {
+  background: #82a8d4;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s;
+}
+.contacto-btn:hover { background: #b5d9f1; color: #000000; }
+.contacto-btn:active { transform: scale(0.95); }
+
+
+/*--Footer--*/
 
 footer{
     width: 100%;
     background-color: #252729;
-    font-family: 'Museo';
     padding: 30px 20px;
 }
 

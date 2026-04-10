@@ -9,131 +9,123 @@
 
 <body>
 
-    <header>
-        <section id="headLogo">
-            <article id="hlogo">
-            <a href="../index/index.html"><img src="../imagenes/logotipos/Logoxd.png" alt=""></a> 
-            </article>
+  <header>
+    <section id="headLogo">
+      <article id="hlogo">
+        <a href="../index/index.html"><img src="../imagenes/logotipos/Logoxd.png" alt=""></a> 
+      </article>
+    </section>
+
+    <nav>
+      <a href="../mapa/mapa.html">Mapa</a>
+      <a href="../reportes/misReportes.html">Mis Reportes</a>
+      <a href="../chatBot/chatBot.html">PoliBot</a>
+      <a href="../ayuda/ayuda.html">Ayuda</a>
+    </nav>
+  </header>
+
+
+  <main>
+
+    <!-- Título/buscador -->
+
+    <section class="bienvenida">
+
+      <section class="bienvenida-inner">
+        <span class="bienvenida-badge">Centro de Ayuda</span>
+        <h1 class="bienvenida-title">¿En qué podemos<br>ayudarte hoy?</h1>
+        <p class="bienvenida-sub">Encuentra respuestas rápidas sobre reportes, el chatbot y los servicios del plantel.</p>
+
+        <section class="barra-busqueda">
+          <input type="text" id="busqueda-input" placeholder="🔍 Buscar...">
         </section>
-        <nav>
-            <a href="../mapa/mapa.html">Mapa</a>
-            <a href="../reportes/misReportes.html">Mis Reportes</a>
-            <a href="../chatBot/chatBot.html">PoliBot</a>
-            <a href="../ayuda/ayuda.html">Ayuda</a>
-        </nav>
+      </section>
 
-    </header>
+      <section class="bienvenida-deco"></section>
+
+    </section>
+
+    <!--Tarjetas/contacto -->
+
+    <section class="contenido-principal">
+
+      <p class="section-label">Guías rápidas</p>
+
+      <!-- Tarjetas-->
+      <section class="section-tarjetas" id="section-tarjetas">
+
+        <!-- Tarjeta: Cómo reportar -->
+
+        <article class="info-breve" data-keywords="reporte incidencia aula folio evidencia foto">
+          <h3>Cómo reportar</h3>
+          <p>Registra una incidencia, adjunta evidencia fotográfica y consulta el estado con tu folio de seguimiento.</p>
+
+          <section class="info-extra">
+            <p>Para reportar una incidencia, haz clic en "Hacer Reporte" en la barra de navegación. Describe el problema, indica la ubicación exacta (por ejemplo, aula E09) y el tipo de falla. Si es posible, adjunta una fotografía. Al enviar, el sistema generará un folio para dar seguimiento hasta que la incidencia sea atendida.</p>
+          </section>
+          <button class="btn-ver-mas" onclick="toggleCard(this)">Ver más <span>↓</span></button>
+        </article>
 
 
-    <main>
+        <!-- Tarjeta: PoliBot -->
 
-            <section id="principal">
+        <article class="info-breve" data-keywords="chatbot polibot pregunta plantel chat">
+          <h3>Cómo usar el PoliBot</h3>
+          <p>El chatbot responde preguntas sobre el plantel: servicios, espacios y procesos escolares.</p>
 
-            <section class="info">
-            <h1 class="big">Centro de Ayuda</h1>
-            <p>Encuentra respuestas rapidas a tus dudas</p>
+          <section class="info-extra">
+            <p>Escribe tu pregunta de forma clara dentro del chat. El chatbot está diseñado únicamente para temas del plantel y no responde sobre otros temas. Aunque intenta ser útil, puede cometer errores, por lo que siempre es recomendable verificar la información importante.</p>
+            <section class="tip">
+              Tip: Haz preguntas concretas para obtener mejores respuestas.
             </section>
+          </section>
+          <button class="btn-ver-mas" onclick="toggleCard(this)">Ver más <span>↓</span></button>
+        </article>
 
-            <section id="tarjetascont">
+        <!-- Tarjeta: Mis Reportes -->
 
-            <section class="fila">
+        <article class="info-breve" data-keywords="mis reportes tabla folio id estado consulta">
+          <h3>Revisar mis reportes</h3>
+          <p>Consulta el estado de todos tus reportes desde "Mis Reportes" usando el folio generado.</p>
 
-            <section class="tarjeta">
-            <section class="front">
-            <h1>Como Reportar</h1>
-            </section>
+          <section class="info-extra">
+            <p>Haz clic en "Mis Reportes" en la barra de navegación. Verás una tabla con todos tus reportes registrados. Puedes buscar uno específico usando el ID o folio que el sistema genera automáticamente al crear el reporte.</p>
+          </section>
+          <button class="btn-ver-mas" onclick="toggleCard(this)">Ver más <span>↓</span></button>
+        </article>
 
-            <section class="back">
-            <h1>Para reportar una incidencia, primero ubica la barra de navegación en la parte superior de la página y haz clic en "Hacer Reporte". Después, describe claramente el problema, indica la ubicación exacta (por ejemplo, aula E09) y el tipo de falla. Si es posible, adjunta una fotografía como evidencia. Al enviar el reporte, el sistema generará un folio de seguimiento para consultar el estado hasta que la incidencia sea atendida.</h1>
-            </section>
-            </section>
+        <!-- Tarjeta: Procesos Escolares -->
 
-            <section class="lado">
-            <h3>Ayuda</h3>
-            <p>Aqui puedes encontrar informacion adicional sobre como hacer un reporte dentro del sistema.</p>
-            </section>
+        <article class="info-breve" data-keywords="tramites procesos escolares administrativo servicios">
+          <h3>Procesos escolares</h3>
+          <p>Información sobre trámites, servicios disponibles y procedimientos administrativos del plantel.</p>
 
-            </section>
+          <section class="info-extra">
+            <p>Aquí encontrarás información sobre los trámites y procesos disponibles dentro del plantel. Si tienes una duda específica, también puedes consultarla directamente con el personal administrativo o a través del PoliBot.</p>
+          </section>
+          <button class="btn-ver-mas" onclick="toggleCard(this)">Ver más <span>↓</span></button>
+        </article>
 
-            <section class="fila">
+      </section>
+    
 
-            <section class="tarjeta">
-            <section class="front">
-            <h1>Como usar el ChatBot</h1>
-            </section>
+      <!-- Sin resultados -->
+      <section class="sin-resultados" id="sinResultados" style="display:none;">
+        🔍 <p>No se encontraron resultados para tu búsqueda.</p>
+      </section>
 
-            <section class="back">
-            <p>El chatbot está diseñado para responder preguntas relacionadas con información del plantel, como servicios, espacios o procesos escolares. Para usarlo, escribe tu pregunta de forma clara dentro del chat. Es importante que las preguntas estén relacionadas únicamente con temas del plantel, ya que el chatbot no puede responder sobre otros temas. Ten en cuenta que, aunque intenta proporcionar información útil, puede cometer errores, por lo que siempre es recomendable verificar la información si tienes dudas.</p></section>
-            </section>
+      <!-- Barra de contacto -->
+      <section class="barra-contacto">
+        <section class="contacto-texto">
+          <p class="contacto-label">¿No encontraste lo que buscabas?</p>
+          <p class="contacto-value">Escríbenos a <strong>PoliPocket@support.com</strong></p>
+        </section>
+        <a href="mailto:PoliPocket@support.com" class="contacto-btn">Contactar soporte</a>
+      </section>
 
-            <section class="lado">
-            <h3>Tip</h3>
-            <p>Haz preguntas claras y relacionadas con el plantel para obtener mejores respuestas.</p>
-            </section>
+    </section>
 
-            </section>
-
-            <section class="fila">
-
-            <section class="tarjeta">
-            <section class="front">
-            <h1>Como reviso mis reportes</h1>
-            </section>
-
-            <section class="back">
-            <h1>Para revisar tus reportes, ubica la barra de navegación en la parte superior de la página y haz clic en “Mis reportes”. Al entrar, se mostrará una tabla con la información de todos los reportes que has realizado. Si necesitas encontrar uno en específico, puedes buscarlo utilizando el ID o folio que el sistema genera automáticamente al momento de crear el reporte. Esto te permitirá consultar fácilmente el estado o la información de cada incidencia registrada.</h1>
-            </section>
-            </section>
-
-            <section class="lado">
-            <h3>Info</h3>
-            <p>Consulta informacion sobre los servicios disponibles dentro del plantel.</p>
-            </section>
-
-            </section>
-
-            <section class="fila">
-
-            <section class="tarjeta">
-            <section class="front">
-            <h1>Procesos Escolares</h1>
-            </section>
-
-            <section class="back">
-            <h1>Informacion</h1>
-            </section>
-            </section>
-
-            <section class="lado">
-            <h3>Guia</h3>
-            <p>Aqui podras encontrar ayuda sobre tramites y procesos escolares.</p>
-            </section>
-
-            </section>
-
-            <section class="fila">
-
-            <section class="tarjeta">
-            <section class="front">
-            <h1>Contacto</h1>
-            </section>
-
-            <section class="back">
-            <h1>Informacion</h1>
-            </section>
-            </section>
-
-            <section class="lado">
-            <h3>Soporte</h3>
-            <p>Si necesitas mas ayuda puedes comunicarte con el personal administrativo.</p>
-            </section>
-
-            </section>
-
-            </section>
-
-            </section>
-    </main>
+  </main>
 
     <footer>
         <article class="foart1">
@@ -177,8 +169,6 @@
 
         </article>
     </footer>
-
-
 
 <script src="ayuda.js"></script>
 </body>
