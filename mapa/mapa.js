@@ -116,6 +116,8 @@ var geoJsonPoli = {
         "tipo": "Edificio",
         "contenido": [
           {"nombre": "Aula A-1", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Aula A-2", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Aula A-3", "tipo": "aula", "nivel": "1"},
           {"nombre": "Baños", "tipo": "sanitario", "nivel": "2"}
         ]
       },
@@ -151,8 +153,13 @@ var geoJsonPoli = {
       "type": "Feature",
       "properties": {
         "nombre": "Edificio B",
-        "tipo": "Edificio"
-        
+        "tipo": "Edificio",
+        "contenido": [
+          {"nombre": "Aula B-1", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Aula B-2", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Aula B-3", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Baños", "tipo": "sanitario", "nivel": "2"}
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -230,7 +237,13 @@ var geoJsonPoli = {
       "type": "Feature",
       "properties": {
         "nombre": "Edificio C",
-        "tipo": "Edificio" 
+        "tipo": "Edificio",
+        "contenido": [
+          {"nombre": "Aula C-1", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Aula C-2", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Aula C-3", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Baños", "tipo": "sanitario", "nivel": "2"}
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -264,7 +277,13 @@ var geoJsonPoli = {
       "type": "Feature",
       "properties": {
         "nombre": "Edificio D",
-        "tipo": "Edificio"
+        "tipo": "Edificio",
+        "contenido": [
+          {"nombre": "Aula D-1", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Aula D-2", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Aula D-3", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Baños", "tipo": "sanitario", "nivel": "2"}
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -298,7 +317,13 @@ var geoJsonPoli = {
       "type": "Feature",
       "properties": {
         "nombre": "Edificio E",
-        "tipo": "Edificio"
+        "tipo": "Edificio",
+        "contenido": [
+          {"nombre": "Aula E-1", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Aula E-2", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Aula E-3", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Baños", "tipo": "sanitario", "nivel": "2"}
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -332,7 +357,13 @@ var geoJsonPoli = {
       "type": "Feature",
       "properties": {
         "nombre": "Edificio F",
-        "tipo": "Edificio"
+        "tipo": "Edificio",
+        "contenido": [
+          {"nombre": "Aula F-1", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Aula F-2", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Aula F-3", "tipo": "aula", "nivel": "1"},
+          {"nombre": "Baños", "tipo": "sanitario", "nivel": "2"}
+        ]
       },
       "geometry": {
         "coordinates": [
@@ -821,5 +852,26 @@ L.polygon([mascaraMundo, mascaraPoli], {
 map.setMaxBounds(geoJsonLayer.getBounds());
 
 //reportes
+
+
+
+//solo mostrar combobox contenido de edificios que tengan
+var aula = document.getElementById("aula");
+var textoAula = document.getElementById("tituloAula");
+
+Object.values(layerEdificio).forEach(function(layer){
+
+  layer.on('click', function(){
+
+    aula.style.display = "block";
+    textoAula.style.display = "flex";
+    
+    if(layer.feature.properties.tipo !== "Edificio"){
+      aula.style.display = "none";
+      textoAula.style.display = "none";
+    }
+  })
+
+});
 
 
