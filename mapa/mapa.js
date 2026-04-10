@@ -672,6 +672,7 @@ var geoJsonPoli = {
   ]
 };
 
+var contenedorBusqueda = document.getElementById("contenedorBusqueda");
 var tarjetaMapa = document.getElementById("tarjetaMapa");
 
 //boton para centrar el mapa
@@ -679,6 +680,7 @@ var botonCentrar = document.getElementById("botonCentrar");
 botonCentrar.addEventListener('click', function () {
   map.setView([20.65934411098098, -103.3258758827752], 19);
   tarjetaMapa.classList.remove('visible');
+  contenedorBusqueda.innerHTML = '';
 });
 
 var layerEdificio = {};
@@ -700,6 +702,7 @@ var geoJsonLayer = L.geoJSON(geoJsonPoli, {
 
       if (feature.properties.tipo === "perimetro") {
         tarjetaMapa.classList.remove('visible');
+        contenedorBusqueda.innerHTML = '';
       }
     });
 
@@ -744,7 +747,6 @@ barraBusqueda.addEventListener('input', function(){
 
   var busqueda = barraBusqueda.value.toLowerCase();
 
-  var contenedorBusqueda = document.getElementById("contenedorBusqueda");
       contenedorBusqueda.innerHTML = '';
 
   //obtener arreglo del objeto layerEdificio
@@ -772,7 +774,6 @@ barraBusqueda.addEventListener('input', function(){
 
         var nombreEdificio = layer.feature.properties.nombre;
         var tipoEdificio = layer.feature.properties.tipo
-        var tarjetaMapa = document.getElementById("tarjetaMapa");
 
         document.getElementById("nombreEdificio").innerHTML = nombreEdificio;
         document.getElementById("tipoEdificio").innerHTML = tipoEdificio;
