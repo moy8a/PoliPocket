@@ -821,5 +821,5 @@ L.polygon([mascaraMundo, mascaraPoli], {
 map.setMaxBounds(geoJsonLayer.getBounds());
 
 //reportes
-console.log(layerEdificio);
+
 
