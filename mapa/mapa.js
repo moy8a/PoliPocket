@@ -502,8 +502,8 @@ var geoJsonPoli = {
     {
       "type": "Feature",
       "properties": {
-        "nombre": "Edificio1",
-        "tipo": "Edificio"
+        "nombre": "Biblioteca2",
+        "tipo": "Taller"
       },
       "geometry": {
         "coordinates": [
@@ -537,7 +537,7 @@ var geoJsonPoli = {
       "type": "Feature",
       "properties": {
         "nombre": "Biblioteca",
-        "tipo": "Edificio"
+        "tipo": "Taller"
       },
       "geometry": {
         "coordinates": [
@@ -672,6 +672,15 @@ var geoJsonPoli = {
   ]
 };
 
+var tarjetaMapa = document.getElementById("tarjetaMapa");
+
+//boton para centrar el mapa
+var botonCentrar = document.getElementById("botonCentrar");
+botonCentrar.addEventListener('click', function () {
+  map.setView([20.65934411098098, -103.3258758827752], 19);
+  tarjetaMapa.classList.remove('visible');
+});
+
 var layerEdificio = {};
 
 //estilos del mapa
@@ -687,25 +696,12 @@ var geoJsonLayer = L.geoJSON(geoJsonPoli, {
   //estilo dinamico
   onEachFeature: function (feature, layer) {
 
-    //ocultar tarjeta y recomendaciones con datos del edificio
-    var tarjetaMapa = document.getElementById("tarjetaMapa");
-
     layer.on('click', function () {
 
       if (feature.properties.tipo === "perimetro") {
         tarjetaMapa.classList.remove('visible');
       }
     });
-
-    //boton para centrar el mapa
-    var botonCentrar = document.getElementById("botonCentrar");
-    botonCentrar.addEventListener('click', function () {
-      map.setView([20.65934411098098, -103.3258758827752], 19);
-
-      var tarjetaMapa = document.getElementById("tarjetaMapa");
-      tarjetaMapa.classList.remove('visible');
-    });
-
 
     if (feature.properties.tipo === "perimetro") return;
 
@@ -731,10 +727,6 @@ var geoJsonLayer = L.geoJSON(geoJsonPoli, {
       document.getElementById("nombreEdificio").innerHTML = nombreEdificio;
       document.getElementById("tipoEdificio").innerHTML = tipoEdificio;
 
-      //Mostrar el formulario
-      vistaSimple.style.display = "block";
-      formulario.style.display = "none";
-      
       tarjetaMapa.classList.add('visible');
 
       var centroEdificio = layer.getBounds().getCenter();
@@ -826,3 +818,7 @@ L.polygon([mascaraMundo, mascaraPoli], {
 }).addTo(map);
 
 map.setMaxBounds(geoJsonLayer.getBounds());
+
+//reportes
+console.log(layerEdificio);
+
