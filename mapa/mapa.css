@@ -374,7 +374,7 @@ h4{
     top: 70px;
     right: -300px; /* oculto fuera de pantalla */
     width: 300px;
-    height: 25%;
+    height: auto;
     background: white;
     box-shadow: 0 2px 12px rgba(0, 153, 255, 0.25);
     border-radius: 15px 0 0 15px ;
