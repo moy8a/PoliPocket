@@ -772,23 +772,35 @@ var geoJsonLayer = L.geoJSON(geoJsonPoli, {
 }).addTo(map);
 
 //barra de busqueda
+function recortar(texto){
+  return texto.toLowerCase().replace(/[-\s]/g, '');
+}
+
 var barraBusqueda = document.getElementById("barraBusqueda");
 
 barraBusqueda.addEventListener('input', function(){
 
-  var busqueda = barraBusqueda.value.toLowerCase();
+  var busqueda = recortar(barraBusqueda.value);
 
       contenedorBusqueda.innerHTML = '';
-      
+
   //obtener llave nombre del objeto layerEdificio
   Object.keys(layerEdificio).forEach(function(nombre){
 
     var layer = layerEdificio[nombre];
 
-   // const buscarContenido = layer.feature.properties.contenido;
+    const contenidoEdificio = layer.feature.properties.contenido;
+    var contenidoExiste = false;
+
+    if(contenidoEdificio){
+      contenidoEdificio.forEach(function(aula){
+
+        //console.log(aula.nombre);
+      });
+    }
 
     //recomendar busqueda
-    if(nombre.toLowerCase().includes(busqueda)){
+    if(recortar(nombre).includes(busqueda)){
 
       var recomendacion = document.createElement('button');
       recomendacion.classList.add('recomendacion'); 
@@ -821,7 +833,7 @@ barraBusqueda.addEventListener('input', function(){
     }
 
     //colocar borde si la busqueda coincide con nombre en el arrglo
-    if(nombre.toLowerCase() === (busqueda)){
+    if(recortar(nombre) === (busqueda)){
 
       layer.setStyle({color:'#00c3ff', weight: 4});
 
