@@ -706,6 +706,9 @@ var geoJsonPoli = {
 var contenedorBusqueda = document.getElementById("contenedorBusqueda");
 var tarjetaMapa = document.getElementById("tarjetaMapa");
 
+var aula = document.getElementById("aula");
+var textoAula = document.getElementById("tituloAula");
+
 //boton para centrar el mapa
 var botonCentrar = document.getElementById("botonCentrar");
 botonCentrar.addEventListener('click', function () {
@@ -817,7 +820,7 @@ barraBusqueda.addEventListener('input', function(){
       }
       
       //al clickear recomendacion mostrar edificio
-      recomendacion.addEventListener('click', function(){
+      recomendacion.addEventListener('click', function () {
 
         var nombreEdificio = layer.feature.properties.nombre;
         var tipoEdificio = layer.feature.properties.tipo
@@ -826,6 +829,28 @@ barraBusqueda.addEventListener('input', function(){
         document.getElementById("tipoEdificio").innerHTML = tipoEdificio;
 
         tarjetaMapa.classList.add('visible');
+
+        aula.style.display = "none";
+        textoAula.style.display = "none";
+        aula.innerHTML = '';
+
+        //mostrar contenido de edificio en combobox
+        const contenidoEdificio = layer.feature.properties.contenido;
+
+        if (contenidoEdificio) {
+
+          aula.style.display = "block";
+          textoAula.style.display = "flex";
+
+          contenidoEdificio.forEach(function (contenido) {
+
+            const opcionContenido = document.createElement('option');
+            opcionContenido.textContent = contenido.nombre;
+
+            aula.appendChild(opcionContenido);
+
+          })
+        }
 
         var centroEdificio = layer.getBounds().getCenter();
 
@@ -872,8 +897,6 @@ map.setMaxBounds(geoJsonLayer.getBounds());
 
 
 //solo mostrar combobox contenido de edificios que tengan
-var aula = document.getElementById("aula");
-var textoAula = document.getElementById("tituloAula");
 aula.style.display = "none";
 textoAula.style.display = "none";
 
