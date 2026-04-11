@@ -779,11 +779,13 @@ barraBusqueda.addEventListener('input', function(){
   var busqueda = barraBusqueda.value.toLowerCase();
 
       contenedorBusqueda.innerHTML = '';
-
-  //obtener arreglo del objeto layerEdificio
+      
+  //obtener llave nombre del objeto layerEdificio
   Object.keys(layerEdificio).forEach(function(nombre){
 
-    var layer = layerEdificio[nombre];  
+    var layer = layerEdificio[nombre];
+
+   // const buscarContenido = layer.feature.properties.contenido;
 
     //recomendar busqueda
     if(nombre.toLowerCase().includes(busqueda)){
@@ -858,31 +860,37 @@ map.setMaxBounds(geoJsonLayer.getBounds());
 //solo mostrar combobox contenido de edificios que tengan
 var aula = document.getElementById("aula");
 var textoAula = document.getElementById("tituloAula");
+aula.style.display = "none";
+textoAula.style.display = "none";
 
-Object.values(layerEdificio).forEach(function(layer){
+Object.values(layerEdificio).forEach(function (layer) {
 
-  layer.on('click', function(){
+  layer.on('click', function () {
 
-    aula.style.display = "block";
-    textoAula.style.display = "flex";
-    
-    if(layer.feature.properties.tipo !== "Edificio"){
-      aula.style.display = "none";
-      textoAula.style.display = "none";
-      return;
+    aula.style.display = "none";
+    textoAula.style.display = "none";
+    aula.innerHTML = '';
+
+    if (layer.feature.properties.tipo === "Edificio") {
+      aula.style.display = "block";
+      textoAula.style.display = "flex";
+
     }
 
     //mostrar contenido de edificio en combobox
     const contenidoEdificio = layer.feature.properties.contenido;
 
-    contenidoEdificio.forEach(function(contenido){
-      
-      const opcionContenido = document.createElement('option');
-      opcionContenido.textContent = contenido.nombre;
+    if (contenidoEdificio) {
 
-      aula.appendChild(opcionContenido);
+      contenidoEdificio.forEach(function (contenido) {
 
-    })
+        const opcionContenido = document.createElement('option');
+        opcionContenido.textContent = contenido.nombre;
+
+        aula.appendChild(opcionContenido);
+
+      })
+    }
   })
 
 });
