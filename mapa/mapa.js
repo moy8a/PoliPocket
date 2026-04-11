@@ -796,9 +796,7 @@ barraBusqueda.addEventListener('input', function(){
       contenidoEdificio.forEach(function(aula){
 
         if(recortar(aula.nombre).includes(busqueda)){
-          console.log(aula.nombre)
           contenidoExiste = true;
-          console.log(contenidoExiste)
         }
       });
     }
