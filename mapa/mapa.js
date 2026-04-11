@@ -795,12 +795,16 @@ barraBusqueda.addEventListener('input', function(){
     if(contenidoEdificio){
       contenidoEdificio.forEach(function(aula){
 
-        //console.log(aula.nombre);
+        if(recortar(aula.nombre).includes(busqueda)){
+          console.log(aula.nombre)
+          contenidoExiste = true;
+          console.log(contenidoExiste)
+        }
       });
     }
 
     //recomendar busqueda
-    if(recortar(nombre).includes(busqueda)){
+    if(recortar(nombre).includes(busqueda) || contenidoExiste){
 
       var recomendacion = document.createElement('button');
       recomendacion.classList.add('recomendacion'); 
