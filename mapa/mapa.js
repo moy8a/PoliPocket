@@ -869,7 +869,20 @@ Object.values(layerEdificio).forEach(function(layer){
     if(layer.feature.properties.tipo !== "Edificio"){
       aula.style.display = "none";
       textoAula.style.display = "none";
+      return;
     }
+
+    //mostrar contenido de edificio en combobox
+    const contenidoEdificio = layer.feature.properties.contenido;
+
+    contenidoEdificio.forEach(function(contenido){
+      
+      const opcionContenido = document.createElement('option');
+      opcionContenido.textContent = contenido.nombre;
+
+      aula.appendChild(opcionContenido);
+
+    })
   })
 
 });
