@@ -2,7 +2,7 @@ import { db, auth } from "./firebase.js";
 import { collection, addDoc, Timestamp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
-export async function crearUsuario(codigo, nombre, apellido, password, correo, colaborador) {
+export async function crearUsuario(codigo, nombre, apellido, password, correo, rol) {
   try {
 
     const userCredential = await createUserWithEmailAndPassword(auth, correo, password);
@@ -14,7 +14,7 @@ export async function crearUsuario(codigo, nombre, apellido, password, correo, c
       nombre: nombre,
       apellido: apellido,
       correo: correo,
-      colaborador: colaborador,
+      rol: rol,
       fecha_registro: Timestamp.now()
     });
 

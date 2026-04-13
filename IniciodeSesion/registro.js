@@ -13,7 +13,7 @@ document.getElementById("registro").addEventListener('submit', async (event) => 
         data.get("apellido"),
         data.get("password"),
         data.get("correo"),
-        false
+        "estudiante"
     );
 });
 
