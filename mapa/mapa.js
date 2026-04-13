@@ -1,6 +1,4 @@
-import { db, auth } from "../firebase.js";
-import { collection, addDoc, onSnapshot, query, where, Timestamp, runTransaction, doc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+
 
 //mapa del poli
 var map = L.map('mapa', {
@@ -892,10 +890,6 @@ L.polygon([mascaraMundo, mascaraPoli], {
 
 map.setMaxBounds(geoJsonLayer.getBounds());
 
-//reportes
-
-
-
 //solo mostrar combobox contenido de edificios que tengan
 aula.style.display = "none";
 textoAula.style.display = "none";
@@ -931,5 +925,10 @@ Object.values(layerEdificio).forEach(function (layer) {
   })
 
 });
+
+//reportes
+
+
+
 
 
