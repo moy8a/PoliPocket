@@ -1,4 +1,4 @@
-
+import { crearReporte } from "../crearReporte.js";
 
 //mapa del poli
 var map = L.map('mapa', {
@@ -715,6 +715,8 @@ botonCentrar.addEventListener('click', function () {
   contenedorBusqueda.innerHTML = '';
 });
 
+var edificioSeleccionado;
+
 var layerEdificio = {};
 
 //estilos del mapa
@@ -731,6 +733,8 @@ var geoJsonLayer = L.geoJSON(geoJsonPoli, {
   onEachFeature: function (feature, layer) {
 
     layer.on('click', function () {
+
+      edificioSeleccionado = feature.properties.nombre;
 
       if (feature.properties.tipo === "perimetro") {
         tarjetaMapa.classList.remove('visible');
@@ -927,6 +931,28 @@ Object.values(layerEdificio).forEach(function (layer) {
 });
 
 //reportes
+document.getElementById("formReporte").addEventListener('submit', async (event) => {
+
+  event.preventDefault();
+
+  const form = event.target;
+  const data = new FormData(form);
+
+  let reporte = {
+    edificio: edificioSeleccionado,
+    tipo_reporte: data.get("tipo"),
+    area: data.get("area"),
+    descripcion: data.get("descripcion"),
+    foto_url: null,
+    fecha_solucion: null,
+    codigo_colaborador: null,
+    uid_colaborador: null,
+    estado: "pendiente"
+  }
+
+  await crearReporte(reporte);
+});
+
 
 
 
