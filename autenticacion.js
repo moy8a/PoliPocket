@@ -1,13 +1,31 @@
 import { auth, db } from "./firebase.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 import { doc, getDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+
+
+//obtener datos de sesion
+export function sesion(callback){
+    onAuthStateChanged(auth, async(usuario)=>{
+        signOut(auth);
+        if(!usuario){
+            callback(usuario);
+            return;
+        }
+
+        const docUsuario = await getDoc(doc(db, "usuarios", usuario.uid));
+        if(docUsuario.exists()){
+            callback(docUsuario.data());
+        }
+    })
+}
+
 
 
 //redirigir si no ha iniciado sesion
 export function soloUsuarios(callback){
     onAuthStateChanged(auth, async(usuario)=>{
         if(!usuario){
-            window.location.href = "../iniciodeSesion/iniciodeSesion.html";
+            window.location.href = "../IniciodeSesion/IniciodeSesion.html";
             return;
         }
 
@@ -22,7 +40,7 @@ export function soloUsuarios(callback){
 export function soloColaborador(callback){
     onAuthStateChanged(auth, async(usuario)=>{
         if(!usuario){
-            window.location.href = "../iniciodeSesion/iniciodeSesion.html";
+            window.location.href = "../IniciodeSesion/IniciodeSesion.html";
             return;
         }
 
@@ -33,7 +51,7 @@ export function soloColaborador(callback){
 
             switch(datosUsuario.rol){
                 case "estudiante":
-                    window.location.href = "../index/index.html";
+                    window.location.href = "../mapa/mapa.html";
                     break;
                 
                 case "colaborador":

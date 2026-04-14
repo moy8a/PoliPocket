@@ -1,5 +1,5 @@
 import { crearReporte } from "../crearReporte.js";
-import { soloColaborador, soloUsuarios } from "../autenticacion.js";
+import { soloColaborador, soloUsuarios, sesion } from "../autenticacion.js";
 
 
 //mapa del poli
@@ -934,7 +934,13 @@ Object.values(layerEdificio).forEach(function (layer) {
 
 //autenticacion, falta agregar los modos por usuario
 
-soloUsuarios(function(datosUsuario){
+sesion(function(datosUsuario){
+
+  if(!datosUsuario) return;
+  
+    document.getElementById("btnIrReporte").style.display = "block";
+    document.getElementById("btnVolver").style.display = "block" //cambair a una funcion----
+  
 });
 
 
