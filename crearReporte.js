@@ -1,6 +1,6 @@
 import { db, auth } from "../firebase.js";
 import { collection, addDoc, onSnapshot, query, where, Timestamp, runTransaction, doc, getDocs } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+
 
 export async function crearReporte(reporte){
     try{

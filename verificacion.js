@@ -1,6 +1,6 @@
 import { auth, db } from "./firebase.js";
 import { signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
-import { collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+import { collection, doc, where, getDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 
 export async function iniciarSesion(correo, password) {
   try {
@@ -8,22 +8,11 @@ export async function iniciarSesion(correo, password) {
     const userCredential = await signInWithEmailAndPassword(auth, correo, password);
     const uid = userCredential.user.uid;
 
-    // Step 2 — Use uid to fetch their profile from Firestore
-    const q = query(
-      collection(db, "usuarios"),
-      where("uid", "==", uid)
-    );
-
-    const snapshot = await getDocs(q);
-    
-    snapshot.forEach(doc => {
-      const userData = doc.data();
-      
-      console.log("Bienvenido:", userData.nombre);
-   
-    });
-
-    window.location.href = "../mapa/mapa.html"
+    const userDoc = await getDoc(doc(db, "usuarios", uid));
+    if(userDoc.exists()){
+      const datosUsuario = userDoc.data();
+      window.location.href = "../mapa/mapa.html"
+    }
 
   } catch (error) {
     switch(error.code) {
@@ -37,11 +26,13 @@ export async function iniciarSesion(correo, password) {
         break;
 
       case "auth/user-disabled":
-        document.getElementById("errorMsg").textContent = "Esta cuenta ha sido deshabilitada";
+        document.getElementById("errorSesion").textContent = "Esta cuenta ha sido deshabilitada";
         break;
 
       default:
-        document.getElementById("errorMsg").textContent = "Ocurrio un error";
+        console.log(error.code);
+        console.log(error.message);
+        document.getElementById("errorSesion").textContent = "Ocurrio un error";
         break;
     }
   }

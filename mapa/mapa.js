@@ -1,4 +1,8 @@
+import { db, auth } from "../firebase.js";
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { collection, doc, where, getDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 import { crearReporte } from "../crearReporte.js";
+
 
 //mapa del poli
 var map = L.map('mapa', {
@@ -929,6 +933,24 @@ Object.values(layerEdificio).forEach(function (layer) {
   })
 
 });
+
+//autenticacion, falta agregar los modos por usuario
+onAuthStateChanged(auth, async (usuario) => {
+
+  if (!usuario) {
+    console.log("invitado");
+    return;
+  }
+
+  console.log("uid del usuario:", usuario.uid);
+
+  const userDoc = await getDoc(doc(db, "usuarios", usuario.uid));
+  if (userDoc.exists()) {
+    const datosUsuario = userDoc.data();
+    console.log(datosUsuario.rol);
+  }
+});
+
 
 //reportes
 document.getElementById("formReporte").addEventListener('submit', async (event) => {
