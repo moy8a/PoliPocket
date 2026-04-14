@@ -934,7 +934,8 @@ Object.values(layerEdificio).forEach(function (layer) {
 
 //autenticacion, falta agregar los modos por usuario
 
-soloUsuarios(function(datosUsuario){});
+soloUsuarios(function(datosUsuario){
+});
 
 
 //reportes
