@@ -7,7 +7,7 @@ import { doc, getDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-
 export function soloUsuarios(callback){
     onAuthStateChanged(auth, async(usuario)=>{
         if(!usuario){
-            window.location.href = "../index/index.html";
+            window.location.href = "../iniciodeSesion/iniciodeSesion.html";
             return;
         }
 
@@ -31,12 +31,15 @@ export function soloColaborador(callback){
 
             const datosUsuario = docUsuario.data();
 
-            if(datosUsuario.rol == "estudiante"){
-                window.location.href = "../index/index.html";
-                return
+            switch(datosUsuario.rol){
+                case "estudiante":
+                    window.location.href = "../index/index.html";
+                    break;
+                
+                case "colaborador":
+                    callback(datosUsuario);
+                    break;
             }
-
-            callback(docUsuario.data());
         }
     })
 }

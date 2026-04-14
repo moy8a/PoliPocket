@@ -1,5 +1,5 @@
 import { crearReporte } from "../crearReporte.js";
-import { soloUsuarios } from "../autenticacion.js";
+import { soloColaborador, soloUsuarios } from "../autenticacion.js";
 
 
 //mapa del poli
