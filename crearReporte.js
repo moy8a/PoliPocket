@@ -1,26 +1,19 @@
 import { db, auth } from "../firebase.js";
-import { collection, addDoc, onSnapshot, query, where, Timestamp, runTransaction, doc, getDocs } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+import { collection, addDoc, onSnapshot, query, where, Timestamp, runTransaction, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 
 
-export async function crearReporte(reporte){
-    try{
+export async function crearReporte(reporte) {
+    try {
 
         //usar uid para encontrar el codigo del usuario
         const uid = auth.currentUser.uid;
 
-        const q = query(
-            collection(db, "usuarios"),
-            where("uid","==",uid)
-        );
-
-        const snapshot = await getDocs(q);
-
-        snapshot.forEach(documento => {
-            const datosUsuario = documento.data();
-            
+        const userDoc = await getDoc(doc(db, "usuarios", uid));
+        if (userDoc.exists()) {
+            const datosUsuario = userDoc.data();
             reporte.codigo_usuario = datosUsuario.codigo;
             reporte.uid_usuario = datosUsuario.uid;
-        });
+        }
 
         reporte.fecha_expedicion = Timestamp.now();
 
