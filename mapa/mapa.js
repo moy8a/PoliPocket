@@ -941,15 +941,19 @@ function mostrarInvitado() {
   document.getElementById("verReportes").style.display = "none";
 }
 
+
 sesion(function(datosUsuario){
 
-  if(!datosUsuario){
-    mostrarInvitado();
-    return;
-  }
-  
-  console.log(datosUsuario)
+  switch(datosUsuario.rol){
     
+    case null:
+      mostrarInvitado();
+      break;
+    
+    case "estudiante":
+      document.getElementById("verReportes").style.display = "none";
+      break;
+  }
   
 });
 

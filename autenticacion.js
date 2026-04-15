@@ -6,7 +6,6 @@ import { doc, getDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-
 //obtener datos de sesion
 export function sesion(callback){
     onAuthStateChanged(auth, async(usuario)=>{
-        signOut(auth);
         if(!usuario){
             callback(usuario);
             return;
@@ -55,6 +54,7 @@ export function soloColaborador(callback){
                     break;
                 
                 case "colaborador":
+                case "admin":
                     callback(datosUsuario);
                     break;
             }
