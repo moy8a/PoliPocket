@@ -934,12 +934,22 @@ Object.values(layerEdificio).forEach(function (layer) {
 
 //autenticacion, falta agregar los modos por usuario
 
+function mostrarInvitado() {
+  document.getElementById("btnIrReporte").style.display = "none";
+  document.getElementById("btnVolver").style.display = "none";
+  document.getElementById("misReportes").style.display = "none";
+  document.getElementById("verReportes").style.display = "none";
+}
+
 sesion(function(datosUsuario){
 
-  if(!datosUsuario) return;
+  if(!datosUsuario){
+    mostrarInvitado();
+    return;
+  }
   
-    document.getElementById("btnIrReporte").style.display = "block";
-    document.getElementById("btnVolver").style.display = "block" //cambair a una funcion----
+  console.log(datosUsuario)
+    
   
 });
 
