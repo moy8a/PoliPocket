@@ -1,3 +1,9 @@
+//solo permitir a usuarios con sesion iniciada
+import { soloUsuarios } from "../autenticacion.js";
+
+soloUsuarios();
+//
+
 //Boton perfil
 const btn = document.querySelector(".btnPerfil");
 const menu = document.querySelector(".menuPerfil");
