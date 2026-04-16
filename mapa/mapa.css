@@ -405,21 +405,28 @@ h4{
   transition: 0.3s;
 }
 
-.menuDerecha-nav a:hover { transform: scale(1.1); }
 
-.menuDerecha-item {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 12px;
-  border-radius: 8px;
-  text-decoration: none;
-  color: inherit;
-  font-size: 14px;
+.menuDerecha-item{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:10px 12px;
+  border-radius:8px;
+  text-decoration:none;
+  color:inherit;
+  font-size:14px;
+  background:none;
+  border:none;
+  width:100%;
+  text-align:left;
+  cursor:pointer;
+  font:inherit;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
-.menuDerecha-item:hover {
+.menuDerecha-item:hover{
   background: rgba(0, 0, 0, 0.05);
+  transform: scale(1.1);
 }
 
 
