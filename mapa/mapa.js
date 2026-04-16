@@ -1,5 +1,5 @@
 import { crearReporte } from "../crearReporte.js";
-import { soloColaborador, soloUsuarios } from "../autenticacion.js";
+import { soloColaborador, soloUsuarios, sesion } from "../autenticacion.js";
 
 
 //mapa del poli
@@ -934,7 +934,27 @@ Object.values(layerEdificio).forEach(function (layer) {
 
 //autenticacion, falta agregar los modos por usuario
 
-soloUsuarios(function(datosUsuario){
+function mostrarInvitado() {
+  document.getElementById("btnIrReporte").style.display = "none";
+  document.getElementById("btnVolver").style.display = "none";
+  document.getElementById("misReportes").style.display = "none";
+  document.getElementById("verReportes").style.display = "none";
+}
+
+
+sesion(function(datosUsuario){
+
+  switch(datosUsuario.rol){
+    
+    case null:
+      mostrarInvitado();
+      break;
+    
+    case "estudiante":
+      document.getElementById("verReportes").style.display = "none";
+      break;
+  }
+  
 });
 
 
