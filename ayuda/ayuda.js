@@ -25,3 +25,18 @@ document.getElementById('busqueda-input').addEventListener('input', function () 
   });
   document.getElementById('sinResultados').style.display = visible === 0 ? 'flex' : 'none';
 });
+
+//Boton perfil
+const btn = document.querySelector(".btnPerfil");
+const menu = document.querySelector(".menuPerfil");
+
+btn.addEventListener("click", () => {
+    menu.classList.toggle("activo");
+});
+
+// cerrar si das click fuera
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".perfil-container")) {
+        menu.classList.remove("activo");
+    }
+});
