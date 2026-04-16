@@ -950,8 +950,6 @@ sesion(function(datosUsuario){
     return;
   }
   
-    
-  
 });
 
 //cerrar sesion
