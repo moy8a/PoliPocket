@@ -62,3 +62,9 @@ export function soloColaborador(callback){
     })
 }
 
+export function cerrarSesion(){
+    onAuthStateChanged(auth, async () => {
+        signOut(auth);
+    })
+}
+
