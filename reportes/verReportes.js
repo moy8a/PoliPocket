@@ -17,3 +17,18 @@ function exportarExcel() {
     XLSX.utils.book_append_sheet(wb, ws, nombres[tabActiva]);
     XLSX.writeFile(wb, 'Reportes_' + nombres[tabActiva] + '.xlsx');
 }
+
+//Boton perfil
+const btn = document.querySelector(".btnPerfil");
+const menu = document.querySelector(".menuPerfil");
+
+btn.addEventListener("click", () => {
+    menu.classList.toggle("activo");
+});
+
+// cerrar si das click fuera
+document.addEventListener("click", (e) => {
+    if (!e.target.closest(".perfil-container")) {
+        menu.classList.remove("activo");
+    }
+});
