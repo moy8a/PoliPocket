@@ -36,3 +36,24 @@ export async function crearReporte(reporte) {
         console.log(error.message)
     }
 }
+
+//cargar cambios en los reportes y enviarlos al mapa
+export function cargarReportes(callback){
+    try{
+        onSnapshot(collection(db, "reportes"),(snapshot)=>{
+        snapshot.forEach(doc => {
+            
+            const datosReporte = doc.data();
+            if(datosReporte.estado === "completado"){
+                return;
+            }
+
+            callback(datosReporte);
+        });
+    })
+    }catch(error){
+        console.log(error.message)
+        console.log(error.code)
+    }
+    
+}

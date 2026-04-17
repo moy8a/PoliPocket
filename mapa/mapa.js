@@ -1,4 +1,4 @@
-import { crearReporte } from "../crearReporte.js";
+import { crearReporte, cargarReportes } from "../crearReporte.js";
 import { soloColaborador, soloUsuarios, sesion, cerrarSesion } from "../autenticacion.js";
 
 
@@ -983,7 +983,10 @@ document.getElementById("formReporte").addEventListener('submit', async (event) 
 });
 
 
+//prueba
+cargarReportes(function(datosReporte){
 
+});
 
 
 
