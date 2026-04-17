@@ -50,9 +50,9 @@
     <section class="table__header">
         <h1>Ver Reportes</h1>
         <section class="tabs">
-            <button class="tab tab--pendiente active" onclick="mostrarTab('pendiente', this)">Pendiente</button>
-            <button class="tab tab--enproceso" onclick="mostrarTab('enproceso', this)">En Proceso</button>
-            <button class="tab tab--completado" onclick="mostrarTab('completado', this)">Completado</button>
+            <button id="pendiente" class="tab tab--pendiente active" >Pendiente</button>
+            <button id="enProceso" class="tab tab--enproceso" >En Proceso</button>
+            <button id="resuelto" class="tab tab--completado" >Completado</button>
         </section>
         <section class="header-actions">
             <button class="btn-exportar" onclick="exportarExcel()">⬇ Exportar Excel</button>

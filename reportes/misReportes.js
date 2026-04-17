@@ -1,7 +1,7 @@
 //solo permitir a usuarios con sesion iniciada
 import { soloUsuarios } from "../autenticacion.js";
 
-soloUsuarios();
+soloUsuarios(function datosUsuario(){});
 //
 
 //Boton perfil

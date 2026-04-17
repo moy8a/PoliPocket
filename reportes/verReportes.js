@@ -1,18 +1,35 @@
 //solo permitir a colaboradores y admins con sesion iniciada
 import { soloColaborador } from "../autenticacion.js";
 
-soloColaborador();
+soloColaborador(function datosUsuario(){});
 //
 
-let tabActiva = 'pendiente';
+let pendiente = document.getElementById("pendiente");
+let enProceso = document.getElementById("enProceso");
+let resuelto = document.getElementById("resuelto");
 
-function mostrarTab(tab, btn) {
-    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    document.getElementById('tab-' + tab).classList.add('active');
-    btn.classList.add('active');
-    tabActiva = tab;
+function ocultarTab(){
+    pendiente.classList.remove('active');
+    enProceso.classList.remove('active');
+    resuelto.classList.remove('active');
 }
+
+pendiente.addEventListener('click', function(){
+    ocultarTab();
+    pendiente.classList.add('active');
+})
+
+enProceso.addEventListener('click', function(){
+    ocultarTab();
+    enProceso.classList.add('active');
+})
+
+resuelto.addEventListener('click', function(){
+    ocultarTab();
+    resuelto.classList.add('active');
+})
+
+/////
 
 function exportarExcel() {
     const tablaId = 'tabla-' + tabActiva;
