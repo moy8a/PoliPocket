@@ -1,3 +1,9 @@
+//solo permitir a colaboradores y admins con sesion iniciada
+import { soloColaborador } from "../autenticacion.js";
+
+soloColaborador();
+//
+
 let tabActiva = 'pendiente';
 
 function mostrarTab(tab, btn) {
