@@ -983,9 +983,9 @@ document.getElementById("formReporte").addEventListener('submit', async (event) 
 });
 
 
-//prueba
+//cargar
 cargarReportes(function(datosReporte){
-
+  
 });
 
 
