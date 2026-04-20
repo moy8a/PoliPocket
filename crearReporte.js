@@ -43,11 +43,9 @@ export function cargarReportes(callback){
       onSnapshot(collection(db, "reportes"), (snapshot) => {
         const arregloReportes = [];
         snapshot.forEach(doc => {
-
+          
+          //agregar cada reporte al arreglo
           const datosReporte = doc.data();
-          if (datosReporte.estado === "completado") {
-            return;
-          }
           arregloReportes.push(datosReporte);
             
         });
