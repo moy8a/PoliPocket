@@ -13,8 +13,9 @@ soloColaborador(function datosUsuario() {
     
     arregloReportes.forEach(datosReporte => {
       
-      const estado = datosReporte.estado;
       let tablaActiva;
+      
+      const estado = datosReporte.estado;
       switch (estado) {
         case "pendiente":
           tablaActiva = document.getElementById("Tabla_pendiente");
