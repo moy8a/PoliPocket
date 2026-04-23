@@ -1,5 +1,5 @@
 import { db, auth } from "../firebase.js";
-import { collection, addDoc, onSnapshot, query, where, Timestamp, runTransaction, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+import { collection, addDoc, onSnapshot, updateDoc, query, where, Timestamp, runTransaction, doc, getDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 
 
 export async function crearReporte(reporte) {
@@ -57,4 +57,45 @@ export function cargarReportes(callback){
         console.log(error.code)
     }
     
+}
+
+export async function actualizarReporte(estado, datos) {
+  try {
+    //guardar usuario actual para encontrar su codigo
+    const uid = auth.currentUser.uid
+    
+    let datosUsuario;
+    const userDoc = await getDoc(doc(db, "usuarios", uid));
+    if (userDoc.exists()) {
+     datosUsuario = userDoc.data();
+    }
+    
+    //guardar numero de reporte para encontrarlo en la base de datos
+    const numero_reporte = datos.id
+    const reporte = query(collection(db, "reportes"), where("numero_reporte", "==", numero_reporte));
+    
+    //buscar el reporte por su numero de reporte y obtener su id
+    let idReporte;
+    const reporteSnap = await getDocs(reporte);
+    reporteSnap.forEach((reporteDoc) => {
+      idReporte = reporteDoc.id
+    });
+    
+    let fecha_solucion = null;
+    if (estado === "completado") {
+      fecha_solucion = Timestamp.now();
+    }
+    
+    //actualizar estado del reporte y agregar el codigo del colaborador
+    await updateDoc(doc(db, "reportes", idReporte), {
+      codigo_colaborador: datosUsuario.codigo,
+      estado: estado,
+      uid_colaborador: datosUsuario.uid,
+      fecha_solucion: fecha_solucion
+      });
+    
+  } catch (error) {
+    console.log(error.code);
+    console.log(error.message);
+  }
 }

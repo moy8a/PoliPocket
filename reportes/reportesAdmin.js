@@ -1,9 +1,9 @@
 
 import { soloColaborador } from "../autenticacion.js";
-import { cargarReportes } from "../crearReporte.js";
+import { cargarReportes, actualizarReporte } from "../crearReporte.js";
 
 //solo permitir a colaboradores y admins con sesion iniciada
-soloColaborador(function datosUsuario() {
+soloColaborador(function (datosUsuario) {
   
   cargarReportes(function (arregloReportes) {
     //limpiar tabla
@@ -60,11 +60,16 @@ function elementosTabla(datosReporte, tablaActiva) {
   }
   
   //objeto con solo los datos a mostrar en la tabla
-  let fecha_expedicion = (datosReporte.fecha_expedicion.toDate().toString().slice(0, 24))
+  let fecha_expedicion = datosReporte.fecha_expedicion.toDate().toString().slice(0, 24)
+  let fecha_solucion = "N/A";
+  if (datosReporte.fecha_solucion) {
+    fecha_solucion = datosReporte.fecha_solucion.toDate().toString().slice(0, 24)
+  }
+  
   let datos = {
     id: datosReporte.numero_reporte,
     fechaE: fecha_expedicion,
-    fechaS: "N/A",
+    fechaS: fecha_solucion,
     tipo: datosReporte.tipo_reporte,
     edificio: datosReporte.edificio,
     descripcion: datosReporte.descripcion,
@@ -82,4 +87,19 @@ function elementosTabla(datosReporte, tablaActiva) {
       filaTabla.append(tdBoton);
     }
   });
+  
+  botonReporte.addEventListener('click', async (event) => {
+    
+    event.preventDefault();
+    
+    let estado
+    if (idTabla === "Tabla_pendiente") {
+      estado = "proceso";
+    } else if(idTabla === "Tabla_proceso") {
+      estado = "completado"
+    }
+    
+    await actualizarReporte(estado, datos);
+    
+  })
 }
