@@ -1,5 +1,5 @@
 import { db, auth } from "../firebase.js";
-import { collection, addDoc, onSnapshot, updateDoc, query, where, Timestamp, runTransaction, doc, getDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+import { collection, setDoc, onSnapshot, updateDoc, Timestamp, runTransaction, doc, getDoc, getDocs, addDoc } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 
 
 export async function crearReporte(reporte) {
@@ -27,9 +27,10 @@ export async function crearReporte(reporte) {
             transaction.update(contadorRef, {total: nuevoNumero});
             reporte.numero_reporte = nuevoNumero;
         })
-
-        //guardar todo en la base de datos
-        await addDoc(collection(db, "reportes"), reporte);
+        
+      const idReporte = reporte.numero_reporte.toString();
+      //guardar todo en la base de datos
+      await setDoc(doc(db, "reportes", idReporte), reporte);
 
     }catch(error){
         console.log(error.code)
@@ -56,9 +57,9 @@ export function cargarReportes(callback){
         console.log(error.message)
         console.log(error.code)
     }
-    
 }
 
+//Actualizar reportes
 export async function actualizarReporte(estado, datos) {
   try {
     //guardar usuario actual para encontrar su codigo
@@ -71,15 +72,13 @@ export async function actualizarReporte(estado, datos) {
     }
     
     //guardar numero de reporte para encontrarlo en la base de datos
-    const numero_reporte = datos.id
-    const reporte = query(collection(db, "reportes"), where("numero_reporte", "==", numero_reporte));
-    
-    //buscar el reporte por su numero de reporte y obtener su id
-    let idReporte;
-    const reporteSnap = await getDocs(reporte);
-    reporteSnap.forEach((reporteDoc) => {
-      idReporte = reporteDoc.id
-    });
+    const numero_reporte = datos.id.toString();
+  
+    let datosReporte;
+    const reporteDoc = await getDoc(doc(db, "reportes", numero_reporte));
+    if (reporteDoc.exists()) {
+      datosReporte = reporteDoc.data();
+    }
     
     let fecha_solucion = null;
     if (estado === "completado") {
@@ -87,7 +86,7 @@ export async function actualizarReporte(estado, datos) {
     }
     
     //actualizar estado del reporte y agregar el codigo del colaborador
-    await updateDoc(doc(db, "reportes", idReporte), {
+    await updateDoc(doc(db, "reportes", numero_reporte), {
       codigo_colaborador: datosUsuario.codigo,
       estado: estado,
       uid_colaborador: datosUsuario.uid,
