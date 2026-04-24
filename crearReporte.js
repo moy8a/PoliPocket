@@ -40,7 +40,8 @@ export async function crearReporte(reporte) {
 
 //cargar cambios en los reportes y enviarlos al mapa
 export function cargarReportes(callback){
-    try{
+  try {
+      //escuchar los cambios en tiempo real
       onSnapshot(collection(db, "reportes"), (snapshot) => {
         const arregloReportes = [];
         snapshot.forEach(doc => {
