@@ -87,12 +87,13 @@ function elementosTabla(datosReporte, tablaActiva) {
       filaTabla.append(tdBoton);
     }
   });
+  barraBusqueda(datosReporte, filaTabla);
   
   botonReporte.addEventListener('click', async (event) => {
     
     event.preventDefault();
     
-    let estado
+    let estado;
     if (idTabla === "Tabla_pendiente") {
       estado = "proceso";
     } else if(idTabla === "Tabla_proceso") {
@@ -102,4 +103,23 @@ function elementosTabla(datosReporte, tablaActiva) {
     await actualizarReporte(estado, datos);
     
   })
+}
+
+//barra de busqueda
+function barraBusqueda(datosReporte, filaTabla){
+  let barraBusqueda = document.getElementById("searchUser");
+  
+  barraBusqueda.addEventListener('input', function () {
+    
+    let busqueda = barraBusqueda.value
+    let textoDato;
+    
+    filaTabla.childNodes.forEach(dato => {
+      textoDato = dato.innerText;
+      
+      if (busqueda === textoDato){
+        console.log(filaTabla)
+      }
+    })
+  });
 }
